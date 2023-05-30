@@ -567,7 +567,7 @@ namespace QLSV_VIETSENS
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(324, 28);
             this.layoutControlItem8.Text = "Giới tính:";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(81, 17);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(81, 16);
             // 
             // layoutControlItem9
             // 
@@ -576,7 +576,7 @@ namespace QLSV_VIETSENS
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(324, 28);
             this.layoutControlItem9.Text = "Đối tượng:";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(81, 17);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(81, 16);
             // 
             // layoutControlItem10
             // 
@@ -585,7 +585,7 @@ namespace QLSV_VIETSENS
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Size = new System.Drawing.Size(324, 28);
             this.layoutControlItem10.Text = "Điểm toán:";
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(81, 17);
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(81, 16);
             // 
             // layoutControlItem11
             // 
@@ -594,7 +594,7 @@ namespace QLSV_VIETSENS
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Size = new System.Drawing.Size(324, 28);
             this.layoutControlItem11.Text = "Điểm văn:";
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(81, 17);
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(81, 16);
             // 
             // layoutControlItem12
             // 
@@ -603,7 +603,7 @@ namespace QLSV_VIETSENS
             this.layoutControlItem12.Name = "layoutControlItem12";
             this.layoutControlItem12.Size = new System.Drawing.Size(324, 28);
             this.layoutControlItem12.Text = "Điểm anh:";
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(81, 17);
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(81, 16);
             // 
             // layoutControlItem13
             // 
@@ -921,7 +921,6 @@ namespace QLSV_VIETSENS
             this.Controls.Add(this.barDockControlTop);
             this.Name = "Form1";
             this.Text = "Quản lý sinh viên";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).EndInit();
