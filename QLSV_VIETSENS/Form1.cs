@@ -155,7 +155,6 @@ namespace QLSV_VIETSENS
                 MessageBox.Show("Vui lòng chọn giới tính.");
                 return;
             }
-
             sv.HoTen = txtTen.Text;
             sv.NgaySinh = dateNS.DateTime;
             sv.GioiTinh = cboGioiTinh.SelectedItem.ToString();
@@ -169,7 +168,6 @@ namespace QLSV_VIETSENS
             gridControl1.RefreshDataSource();
         }
 
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
 
@@ -182,43 +180,14 @@ namespace QLSV_VIETSENS
             var result = lstSinhVien.Where(sv => sv.MaSinhVien.Contains(searchValue)).ToList();
             gridControl1.DataSource = result;
         }
-
-
         private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
         {
-            // Xoá sinh viên
-            // Lấy chỉ số dòng đang được chọn
-            int rowIndex = gridView1.FocusedRowHandle;
-
-            // Kiểm tra nếu không có dòng được chọn
-            if (rowIndex < 0)
-            {
-                MessageBox.Show("Vui lòng chọn một sinh viên để xoá.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            // Lấy thông tin sinh viên đang được chọn
-            SinhVien sv = (SinhVien)gridView1.GetRow(rowIndex);
-
-            // Hiển thị hộp thoại xác nhận xoá sinh viên
-            DialogResult result = MessageBox.Show("Bạn có chắc muốn xoá sinh viên '" + sv.MaSinhVien + "'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                // Xóa sinh viên khỏi danh sách
-                lstSinhVien.RemoveAt(rowIndex);
-
-                // Refresh dữ liệu trên GridView
-                gridView1.RefreshData();
-            }
-
+            
         }
-
         private void btnTongSV_Click(object sender, EventArgs e)
         {
             //tim tong so sinh vien trong gridcontrol
             int totalCount = gridView1.RowCount;
-            int tongSoSV = lstSinhVien.Count;
             MessageBox.Show("Tổng số sinh viên : " + totalCount);
         }
 
@@ -243,7 +212,7 @@ namespace QLSV_VIETSENS
             {
                 result += pair.Key + ": " + pair.Value + "\n";
             }
-            MessageBox.Show(result, "Tổng số sinh viên theo từng đối tượng là : ");
+            MessageBox.Show(result, "Tổng số sinh viên theo từng đối tượng : ");
         }
 
         private void txtToan_Validating(object sender, CancelEventArgs e)
@@ -297,7 +266,7 @@ namespace QLSV_VIETSENS
                         writer.WriteLine($"Điểm văn: {sv.DiemVan}");
                         writer.WriteLine($"Điểm anh: {sv.DiemAnh}");
                         writer.WriteLine($"Ghi chú: {sv.GhiChu}");
-                        writer.WriteLine("--------------------------------------------------");
+                        writer.WriteLine(" ");
                     }
                 }
 
@@ -307,12 +276,6 @@ namespace QLSV_VIETSENS
             {
                 MessageBox.Show("Đã xảy ra lỗi khi lưu dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-
-        private void gridControl1_Load(object sender, EventArgs e)
-        {
-            LoadDuLieuSinhVien(@"D:\Vietsens\Học việc\TEST\QLSV_VIETSENS\QLSV_VIETSENS\TextFile1.txt");
         }
 
         private void LoadDuLieuSinhVien(string filePath)
@@ -334,8 +297,8 @@ namespace QLSV_VIETSENS
                             sv = new SinhVien();
                             lstSinhVien.Add(sv);
 
-                            string MaSinhVien = line.Substring(line.IndexOf(":") + 1).Trim();
-                            sv.MaSinhVien = MaSinhVien;
+                            string maSinhVien = line.Substring(line.IndexOf(":") + 1).Trim();
+                            sv.MaSinhVien = maSinhVien;
                         }
                         else if (sv != null)
                         {
@@ -375,7 +338,6 @@ namespace QLSV_VIETSENS
                         }
                     }
                 }
-
                 // Hiển thị dữ liệu trên GridControl
                 gridControl1.DataSource = lstSinhVien;
                 gridView1.RefreshData();
@@ -386,32 +348,6 @@ namespace QLSV_VIETSENS
             }
         }
 
-        private void gridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
-        {
-            GridView view = sender as GridView;
-            // Tạo một đối tượng SinhVien mới và gán vào dòng mới
-            SinhVien sv = new SinhVien();
-            view.SetRowCellValue(e.RowHandle, view.Columns["MaSinhVien"], sv.MaSinhVien);
-            view.SetRowCellValue(e.RowHandle, view.Columns["HoTen"], sv.HoTen);
-            view.SetRowCellValue(e.RowHandle, view.Columns["NgaySinh"], sv.NgaySinh);
-            view.SetRowCellValue(e.RowHandle, view.Columns["GioiTinh"], sv.GioiTinh);
-            view.SetRowCellValue(e.RowHandle, view.Columns["DoiTuong"], sv.DoiTuong);
-            view.SetRowCellValue(e.RowHandle, view.Columns["DiemToan"], sv.DiemToan);
-            view.SetRowCellValue(e.RowHandle, view.Columns["DiemVan"], sv.DiemVan);
-            view.SetRowCellValue(e.RowHandle, view.Columns["DiemAnh"], sv.DiemAnh);
-            view.SetRowCellValue(e.RowHandle, view.Columns["GhiChu"], sv.GhiChu);
-            lstSinhVien.Add(sv);  // Thêm sinh viên vào danh sách
-        }
-
-        private void gridView1_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
-        {
-            GridView view = sender as GridView;
-            int rowHandle = e.RowHandle;
-            // Lấy thông tin sinh viên tương ứng với dòng bị xóa và xóa khỏi danh sách
-            SinhVien sv = view.GetRow(rowHandle) as SinhVien;
-            lstSinhVien.Remove(sv);
-        }
-
         private void bbtnSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //tim kiem sinh vien theo MaSinhVien
@@ -420,26 +356,35 @@ namespace QLSV_VIETSENS
             gridControl1.DataSource = result;
         }
 
-        private void gridView1_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e)
+        private void txtVan_Validating(object sender, CancelEventArgs e)
         {
-            // Hiển thị hộp thoại xác nhận xoá sinh viên
-            DialogResult result = MessageBox.Show("Bạn có chắc muốn xoá sinh viên này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            double diem;
+            if (double.TryParse(txtVan.Text, out diem))
             {
-                // Lấy chỉ số dòng đang xoá
-                int rowIndex = e.RowHandle;
-
-                // Xoá sinh viên khỏi danh sách
-                lstSinhVien.RemoveAt(rowIndex);
-
-                // Cập nhật dữ liệu trong GridView
-                gridView1.RefreshData();
+                if (diem > 10)
+                {
+                    e.Cancel = true;
+                    txtVan.ErrorText = "Điểm không được lớn hơn 10";
+                }
             }
-            else
+        }
+
+        private void txtAnh_Validating(object sender, CancelEventArgs e)
+        {
+            double diem;
+            if (double.TryParse(txtAnh.Text, out diem))
             {
-                e.Cancel = true; // Hủy thao tác xoá
+                if (diem > 10)
+                {
+                    e.Cancel = true;
+                    txtAnh.ErrorText = "Điểm không được lớn hơn 10";
+                }
             }
+        }
+
+        private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            LuuDuLieuSinhVien(@"D:\Vietsens\Học việc\TEST\QLSV_VIETSENS\QLSV_VIETSENS\TextFile1.txt");
         }
     }
 }
