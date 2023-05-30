@@ -1,0 +1,100 @@
+Mã sinh viên: SV0002
+Tên sinh viên: Longnt
+Ngày sinh: 01/05/2023
+Giới tính: Nam
+Đối tượng: Thương binh
+Điểm toán: 1
+Điểm văn: 1
+Điểm anh: 1
+Ghi chú: test
+--------------------------------------------------
+Mã sinh viên: SV0003
+Tên sinh viên: Longnt
+Ngày sinh: 01/05/2023
+Giới tính: Nam
+Đối tượng: Thương binh
+Điểm toán: 1
+Điểm văn: 1
+Điểm anh: 1
+Ghi chú: test
+--------------------------------------------------
+Mã sinh viên: SV0004
+Tên sinh viên: Longnt
+Ngày sinh: 01/05/2023
+Giới tính: Nam
+Đối tượng: Thương binh
+Điểm toán: 1
+Điểm văn: 1
+Điểm anh: 1
+Ghi chú: test
+--------------------------------------------------
+Mã sinh viên: SV0005
+Tên sinh viên: Longnt
+Ngày sinh: 01/05/2023
+Giới tính: Nam
+Đối tượng: Thương binh
+Điểm toán: 1
+Điểm văn: 1
+Điểm anh: 1
+Ghi chú: test
+--------------------------------------------------
+Mã sinh viên: SV0006
+Tên sinh viên: Longnt
+Ngày sinh: 01/05/2023
+Giới tính: Nam
+Đối tượng: Thương binh
+Điểm toán: 1
+Điểm văn: 1
+Điểm anh: 1
+Ghi chú: test
+--------------------------------------------------
+Mã sinh viên: SV0007
+Tên sinh viên: Longnt
+Ngày sinh: 01/05/2023
+Giới tính: Nam
+Đối tượng: Thương binh
+Điểm toán: 1
+Điểm văn: 1
+Điểm anh: 1
+Ghi chú: test
+--------------------------------------------------
+Mã sinh viên: SV0008
+Tên sinh viên: Longnt
+Ngày sinh: 01/05/2023
+Giới tính: Nam
+Đối tượng: Thương binh
+Điểm toán: 1
+Điểm văn: 1
+Điểm anh: 1
+Ghi chú: test
+--------------------------------------------------
+Mã sinh viên: SV0009
+Tên sinh viên: Longnt
+Ngày sinh: 01/05/2023
+Giới tính: Nam
+Đối tượng: Thương binh
+Điểm toán: 1
+Điểm văn: 1
+Điểm anh: 1
+Ghi chú: test
+--------------------------------------------------
+Mã sinh viên: SV0010
+Tên sinh viên: Longnt
+Ngày sinh: 01/05/2023
+Giới tính: Nam
+Đối tượng: Thương binh
+Điểm toán: 1
+Điểm văn: 1
+Điểm anh: 1
+Ghi chú: test
+--------------------------------------------------
+Mã sinh viên: SV0011
+Tên sinh viên: Longnt
+Ngày sinh: 01/05/2023
+Giới tính: Nam
+Đối tượng: Thương binh
+Điểm toán: 1
+Điểm văn: 1
+Điểm anh: 1
+Ghi chú: test
+--------------------------------------------------
