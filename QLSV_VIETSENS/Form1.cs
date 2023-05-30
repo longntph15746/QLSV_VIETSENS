@@ -22,13 +22,16 @@ namespace QLSV_VIETSENS
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            LoadDuLieuSinhVien(@"D:\Vietsens\Học việc\TEST\QLSV_VIETSENS\QLSV_VIETSENS\TextFile1.txt");
+            //LoadDuLieuSinhVien(@"C:\Users\quang\Source\Repos\QLSV_VIETSENS\QLSV_VIETSENS\TextFile1.txt");
             ShowMain();
         }
+
+        //private void Form1_Load(object sender, EventArgs e)
+        //{
+        //    lstSinhVien = new List<SinhVien>();
+        //    LoadDuLieuSinhVien(@"C:\Users\quang\Source\Repos\QLSV_VIETSENS\QLSV_VIETSENS\TextFile1.txt");
+        //    ShowMain();
+        //}
 
         private void ShowMain()
         {
@@ -276,7 +279,7 @@ namespace QLSV_VIETSENS
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            LuuDuLieuSinhVien(@"D:\Vietsens\Học việc\TEST\QLSV_VIETSENS\QLSV_VIETSENS\TextFile1.txt");
+            LuuDuLieuSinhVien(@"C:\Users\quang\Source\Repos\QLSV_VIETSENS\QLSV_VIETSENS\TextFile1.txt");
         }
 
         private void LuuDuLieuSinhVien(string filePath)
@@ -312,7 +315,7 @@ namespace QLSV_VIETSENS
 
         private void gridControl1_Load(object sender, EventArgs e)
         {
-            LoadDuLieuSinhVien(@"D:\Vietsens\Học việc\TEST\QLSV_VIETSENS\QLSV_VIETSENS\TextFile1.txt");
+            LoadDuLieuSinhVien(@"C:\Users\quang\Source\Repos\QLSV_VIETSENS\QLSV_VIETSENS\TextFile1.txt");
         }
 
         private void LoadDuLieuSinhVien(string filePath)
@@ -320,7 +323,6 @@ namespace QLSV_VIETSENS
 
             try
             {
-                List<SinhVien> lstSinhVien = new List<SinhVien>();
                 SinhVien sv = null;
 
                 using (StreamReader reader = new StreamReader(filePath))
