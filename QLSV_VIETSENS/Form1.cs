@@ -81,13 +81,16 @@ namespace QLSV_VIETSENS
             sv.DiemVan = string.IsNullOrEmpty(txtVan.Text) ? 0 : Convert.ToDouble(txtVan.Text);
             sv.DiemAnh = string.IsNullOrEmpty(txtAnh.Text) ? 0 : Convert.ToDouble(txtAnh.Text);
             gridView1.RefreshData();
-            UpdateTongSoSVByDoiTuong();
-
             sv.GhiChu = mmGhiChu.Text;
             lstSinhVien.Add(sv);
             gridControl1.DataSource = lstSinhVien;
             gridControl1.RefreshDataSource();
             MessageBox.Show("Thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            UpdateTongSoSinhVien();
+            UpdateTongSoSVByDoiTuong();
+            TongSoSinhVien8Plus();
+            SinhVienNam();
+            SinhVienNu();
             LuuDuLieuSinhVien(@".\TextFile1.txt");
         }
 
@@ -179,6 +182,11 @@ namespace QLSV_VIETSENS
             gridControl1.DataSource = lstSinhVien;
             gridControl1.RefreshDataSource();
             MessageBox.Show("Thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            UpdateTongSoSinhVien();
+            UpdateTongSoSVByDoiTuong();
+            TongSoSinhVien8Plus();
+            SinhVienNam();
+            SinhVienNu();
             LuuDuLieuSinhVien(@".\TextFile1.txt");
         }
 
@@ -198,9 +206,12 @@ namespace QLSV_VIETSENS
             gridControl1.DataSource = lstSinhVien;
             gridControl1.RefreshDataSource();
             MessageBox.Show("Đã sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LuuDuLieuSinhVien(@".\TextFile1.txt");
+            UpdateTongSoSinhVien();
             UpdateTongSoSVByDoiTuong();
             TongSoSinhVien8Plus();
+            SinhVienNam();
+            SinhVienNu();
+            LuuDuLieuSinhVien(@".\TextFile1.txt");
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -230,7 +241,11 @@ namespace QLSV_VIETSENS
                 gridControl1.DataSource = lstSinhVien;
                 gridView1.RefreshData();
             }
-
+            UpdateTongSoSinhVien();
+            UpdateTongSoSVByDoiTuong();
+            TongSoSinhVien8Plus();
+            SinhVienNam();
+            SinhVienNu();
         }
 
 
@@ -269,18 +284,24 @@ namespace QLSV_VIETSENS
                         writer.WriteLine($"Ghi chú: {sv.GhiChu}");
                         writer.WriteLine(" ");
                     }
+                    UpdateTongSoSinhVien();
+                    UpdateTongSoSVByDoiTuong();
+                    TongSoSinhVien8Plus();
+                    SinhVienNam();
+                    SinhVienNu();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Đã xảy ra lỗi khi lưu dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
 
         private void LoadDuLieuSinhVien(string filePath)
         {
-
+            lstSinhVien.Clear();
             try
             {
                 SinhVien sv = null;
@@ -336,7 +357,7 @@ namespace QLSV_VIETSENS
                             }
                         }
                     }
-                }
+                }       
                 // Hiển thị dữ liệu trên GridControl
                 gridControl1.DataSource = lstSinhVien;
                 gridView1.RefreshData();
@@ -396,9 +417,12 @@ namespace QLSV_VIETSENS
             gridControl1.DataSource = lstSinhVien;
             gridControl1.RefreshDataSource();
             MessageBox.Show("Đã sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LuuDuLieuSinhVien(@".\TextFile1.txt");
+            UpdateTongSoSinhVien();
             UpdateTongSoSVByDoiTuong();
             TongSoSinhVien8Plus();
+            SinhVienNam();
+            SinhVienNu();
+            LuuDuLieuSinhVien(@".\TextFile1.txt");
         }
 
         private void bbtnSearch_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
