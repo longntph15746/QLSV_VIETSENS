@@ -14,9 +14,9 @@ namespace QLSV_VIETSENS
         public string GioiTinh { get; set; }
         public DateTime NgaySinh { get; set; }
         public string DoiTuong { get; set; }
-        public string DiemToan { get; set; }
-        public string DiemVan { get; set; }
-        public string DiemAnh { get; set; }
+        public double DiemToan { get; set; }
+        public double DiemVan { get; set; }
+        public double DiemAnh { get; set; }
         public string GhiChu { get; set; }
 
     }
