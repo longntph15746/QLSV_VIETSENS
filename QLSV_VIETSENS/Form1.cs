@@ -18,6 +18,7 @@ namespace QLSV_VIETSENS
     {
         private List<SinhVien> lstSinhVien = new List<SinhVien>();
         private DXErrorProvider errorProvider = new DXErrorProvider();
+
         public Form1()
         {
             InitializeComponent();
@@ -50,48 +51,49 @@ namespace QLSV_VIETSENS
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            SinhVien sv = new SinhVien();
-            sv.MaSinhVien = GenerateMaSV();
-            // Kiểm tra trường tên sinh viên
-            if (string.IsNullOrEmpty(txtTen.Text))
+            try
             {
-                MessageBox.Show("Vui lòng nhập tên sinh viên.");
-                return;
-            }
+                SinhVien sv = new SinhVien();
+                sv.MaSinhVien = GenerateMaSV();
+                // Kiểm tra trường tên sinh viên
+                if (string.IsNullOrEmpty(txtTen.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập tên sinh viên.");
+                    return;
+                }
 
-            // Kiểm tra trường ngày sinh
-            if (dateNS.EditValue == null)
+                // Kiểm tra trường ngày sinh
+                if (dateNS.EditValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn ngày sinh.");
+                    return;
+                }
+
+                // Kiểm tra trường giới tính
+                if (cboGioiTinh.EditValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn giới tính.");
+                    return;
+                }
+                sv.HoTen = txtTen.Text;
+                sv.GioiTinh = cboGioiTinh.SelectedItem.ToString();
+                sv.NgaySinh = dateNS.DateTime;
+                sv.DoiTuong = cboDoiTuong.Text.ToString();
+                sv.DiemToan = string.IsNullOrEmpty(txtToan.Text) ? 0 : Convert.ToDouble(txtToan.Text);
+                sv.DiemVan = string.IsNullOrEmpty(txtVan.Text) ? 0 : Convert.ToDouble(txtVan.Text);
+                sv.DiemAnh = string.IsNullOrEmpty(txtAnh.Text) ? 0 : Convert.ToDouble(txtAnh.Text);
+                sv.GhiChu = mmGhiChu.Text;
+                lstSinhVien.Add(sv);
+                gridControl1.DataSource = lstSinhVien;
+                gridControl1.RefreshDataSource();
+                MessageBox.Show("Thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LuuDuLieuSinhVien("TextFile1.txt");
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng chọn ngày sinh.");
-                return;
+                MessageBox.Show($"Đã xảy ra lỗi khi tải dữ liệu sinh viên: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            // Kiểm tra trường giới tính
-            if (cboGioiTinh.EditValue == null)
-            {
-                MessageBox.Show("Vui lòng chọn giới tính.");
-                return;
-            }
-
-            sv.HoTen = txtTen.Text;
-            sv.GioiTinh = cboGioiTinh.SelectedItem.ToString();
-            sv.NgaySinh = dateNS.DateTime;
-            sv.DoiTuong = cboDoiTuong.Text.ToString();
-            sv.DiemToan = string.IsNullOrEmpty(txtToan.Text) ? 0 : Convert.ToDouble(txtToan.Text);
-            sv.DiemVan = string.IsNullOrEmpty(txtVan.Text) ? 0 : Convert.ToDouble(txtVan.Text);
-            sv.DiemAnh = string.IsNullOrEmpty(txtAnh.Text) ? 0 : Convert.ToDouble(txtAnh.Text);
-            gridView1.RefreshData();
-            sv.GhiChu = mmGhiChu.Text;
-            lstSinhVien.Add(sv);
-            gridControl1.DataSource = lstSinhVien;
-            gridControl1.RefreshDataSource();
-            MessageBox.Show("Thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            UpdateTongSoSinhVien();
-            UpdateTongSoSVByDoiTuong();
-            TongSoSinhVien8Plus();
-            SinhVienNam();
-            SinhVienNu();
-            LuuDuLieuSinhVien(@".\TextFile1.txt");
         }
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -163,7 +165,6 @@ namespace QLSV_VIETSENS
                 MessageBox.Show("Vui lòng chọn ngày sinh.");
                 return;
             }
-
             // Kiểm tra trường giới tính
             if (cboGioiTinh.EditValue == null)
             {
@@ -182,44 +183,48 @@ namespace QLSV_VIETSENS
             gridControl1.DataSource = lstSinhVien;
             gridControl1.RefreshDataSource();
             MessageBox.Show("Thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            UpdateTongSoSinhVien();
-            UpdateTongSoSVByDoiTuong();
-            TongSoSinhVien8Plus();
-            SinhVienNam();
-            SinhVienNu();
-            LuuDuLieuSinhVien(@".\TextFile1.txt");
+            LuuDuLieuSinhVien("TextFile1.txt");
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            var sv = lstSinhVien.FirstOrDefault(x => x.MaSinhVien == txtMa.Text);
-            lstSinhVien.Remove(sv);
-            sv.HoTen = txtTen.Text;
-            sv.NgaySinh = dateNS.DateTime;
-            sv.GioiTinh = cboGioiTinh.SelectedItem.ToString();
-            sv.DoiTuong = cboDoiTuong.Text.ToString();
-            sv.DiemToan = string.IsNullOrEmpty(txtToan.Text) ? 0 : Convert.ToDouble(txtToan.Text);
-            sv.DiemVan = string.IsNullOrEmpty(txtVan.Text) ? 0 : Convert.ToDouble(txtVan.Text);
-            sv.DiemAnh = string.IsNullOrEmpty(txtAnh.Text) ? 0 : Convert.ToDouble(txtAnh.Text);
-            sv.GhiChu = mmGhiChu.Text;
-            lstSinhVien.Add(sv);
-            gridControl1.DataSource = lstSinhVien;
-            gridControl1.RefreshDataSource();
-            MessageBox.Show("Đã sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            UpdateTongSoSinhVien();
-            UpdateTongSoSVByDoiTuong();
-            TongSoSinhVien8Plus();
-            SinhVienNam();
-            SinhVienNu();
-            LuuDuLieuSinhVien(@".\TextFile1.txt");
+            try
+            {
+                var sv = lstSinhVien.FirstOrDefault(x => x.MaSinhVien == txtMa.Text);
+                lstSinhVien.Remove(sv);
+                sv.HoTen = txtTen.Text;
+                sv.NgaySinh = dateNS.DateTime;
+                sv.GioiTinh = cboGioiTinh.SelectedItem.ToString();
+                sv.DoiTuong = cboDoiTuong.Text.ToString();
+                sv.DiemToan = string.IsNullOrEmpty(txtToan.Text) ? 0 : Convert.ToDouble(txtToan.Text);
+                sv.DiemVan = string.IsNullOrEmpty(txtVan.Text) ? 0 : Convert.ToDouble(txtVan.Text);
+                sv.DiemAnh = string.IsNullOrEmpty(txtAnh.Text) ? 0 : Convert.ToDouble(txtAnh.Text);
+                sv.GhiChu = mmGhiChu.Text;
+                lstSinhVien.Add(sv);
+                gridControl1.DataSource = lstSinhVien;
+                gridControl1.RefreshDataSource();
+                MessageBox.Show("Đã sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LuuDuLieuSinhVien("TextFile1.txt");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //tim kiem sinh vien theo MaSinhVien
-            string searchValue = txtSearch.Text;
-            var result = lstSinhVien.Where(sv => sv.MaSinhVien.Contains(searchValue)).ToList();
-            gridControl1.DataSource = result;
+            try
+            {
+                //tim kiem sinh vien theo MaSinhVien
+                string searchValue = txtSearch.Text;
+                var result = lstSinhVien.Where(sv => sv.MaSinhVien.Contains(searchValue)).ToList();
+                gridControl1.DataSource = result;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
         {
@@ -231,21 +236,21 @@ namespace QLSV_VIETSENS
                 return;
             }
 
-            SinhVien sinhVien = (SinhVien)gridView1.GetRow(rowIndex);
+            string maSinhVien = gridView1.GetRowCellValue(rowIndex, "MaSinhVien").ToString();
 
-            DialogResult result = MessageBox.Show("Bạn có chắc muốn xoá sinh viên '" + sinhVien.MaSinhVien + "'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Bạn có chắc muốn xoá sinh viên '" + maSinhVien + "'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                lstSinhVien.RemoveAt(rowIndex);
-                gridControl1.DataSource = lstSinhVien;
-                gridView1.RefreshData();
+                SinhVien sinhVien = lstSinhVien.FirstOrDefault(sv => sv.MaSinhVien == maSinhVien);
+                if (sinhVien != null)
+                {
+                    lstSinhVien.Remove(sinhVien);
+                    gridControl1.DataSource = lstSinhVien;
+                    gridView1.RefreshData();
+                }
             }
-            UpdateTongSoSinhVien();
-            UpdateTongSoSVByDoiTuong();
-            TongSoSinhVien8Plus();
-            SinhVienNam();
-            SinhVienNu();
+            LuuDuLieuSinhVien("TextFile1.txt");
         }
 
 
@@ -284,16 +289,11 @@ namespace QLSV_VIETSENS
                         writer.WriteLine($"Ghi chú: {sv.GhiChu}");
                         writer.WriteLine(" ");
                     }
-                    UpdateTongSoSinhVien();
-                    UpdateTongSoSVByDoiTuong();
-                    TongSoSinhVien8Plus();
-                    SinhVienNam();
-                    SinhVienNu();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Đã xảy ra lỗi khi lưu dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -301,7 +301,7 @@ namespace QLSV_VIETSENS
 
         private void LoadDuLieuSinhVien(string filePath)
         {
-            lstSinhVien.Clear();
+
             try
             {
                 SinhVien sv = null;
@@ -357,14 +357,14 @@ namespace QLSV_VIETSENS
                             }
                         }
                     }
-                }       
+                }
                 // Hiển thị dữ liệu trên GridControl
                 gridControl1.DataSource = lstSinhVien;
                 gridView1.RefreshData();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Đã xảy ra lỗi khi tải dữ liệu sinh viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -393,12 +393,19 @@ namespace QLSV_VIETSENS
                 }
             }
         }
-
-
-
         private void gridControl1_Load_1(object sender, EventArgs e)
         {
-            LoadDuLieuSinhVien(@".\TextFile1.txt");
+            string fileName = "TextFile1.txt";
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+
+            try
+            {
+                LoadDuLieuSinhVien("TextFile1.txt");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void bbtnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -417,12 +424,7 @@ namespace QLSV_VIETSENS
             gridControl1.DataSource = lstSinhVien;
             gridControl1.RefreshDataSource();
             MessageBox.Show("Đã sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            UpdateTongSoSinhVien();
-            UpdateTongSoSVByDoiTuong();
-            TongSoSinhVien8Plus();
-            SinhVienNam();
-            SinhVienNu();
-            LuuDuLieuSinhVien(@".\TextFile1.txt");
+            LuuDuLieuSinhVien("TextFile1.txt");
         }
 
         private void bbtnSearch_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -468,6 +470,7 @@ namespace QLSV_VIETSENS
                     dateNS.ErrorText = "Ngày sinh không được lớn hơn ngày hiện tại.";
                 }
             }
+
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -488,9 +491,12 @@ namespace QLSV_VIETSENS
 
         private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
-            TongSoSinhVien8Plus();
+            UpdateTongSoSinhVien();
             UpdateTongSoSVByDoiTuong();
-            LuuDuLieuSinhVien(@".\TextFile1.txt");
+            TongSoSinhVien8Plus();
+            SinhVienNam();
+            SinhVienNu();
+            LuuDuLieuSinhVien("TextFile1.txt");
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -538,6 +544,8 @@ namespace QLSV_VIETSENS
             UpdateTongSoSinhVien();
             UpdateTongSoSVByDoiTuong();
             TongSoSinhVien8Plus();
+            SinhVienNam();
+            SinhVienNu();
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -588,7 +596,7 @@ namespace QLSV_VIETSENS
             {
                 e.Cancel = true; // Hủy sự kiện đang xảy ra
 
-                MessageBox.Show("Vui lòng chọn giới tính từ danh sách.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn giới tính từ danh sách", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 comboBox.Undo(); // Hoàn tác giá trị vừa nhập
             }
@@ -597,6 +605,33 @@ namespace QLSV_VIETSENS
         private void cboGioiTinh_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // Xóa thông tin trong các điều khiển
+            txtMa.Text = string.Empty;
+            txtTen.Text = string.Empty;
+            dateNS.Text = string.Empty;
+            cboGioiTinh.Text = string.Empty;
+            cboDoiTuong.Text = string.Empty;
+            txtToan.Text = string.Empty;
+            txtVan.Text = string.Empty;
+            txtAnh.Text = string.Empty;
+            mmGhiChu.Text = string.Empty;
+            // Đặt focus vào điều khiển đầu tiên
+            txtTen.Focus();
+        }
+
+        private void txtTen_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void dateNS_Click(object sender, EventArgs e)
+        {
+            DateEdit date = sender as DateEdit;
+            date.ShowPopup();
         }
     }
 }

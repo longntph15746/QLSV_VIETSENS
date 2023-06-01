@@ -35,6 +35,10 @@ namespace QLSV_VIETSENS
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.txtSearch = new DevExpress.XtraEditors.TextEdit();
@@ -42,8 +46,8 @@ namespace QLSV_VIETSENS
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bbtnAdd = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnEdit = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSearch = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -63,7 +67,6 @@ namespace QLSV_VIETSENS
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
@@ -89,11 +92,10 @@ namespace QLSV_VIETSENS
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -107,7 +109,7 @@ namespace QLSV_VIETSENS
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.LOCK = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.EDIT = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -115,6 +117,8 @@ namespace QLSV_VIETSENS
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).BeginInit();
@@ -131,7 +135,6 @@ namespace QLSV_VIETSENS
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmGhiChu.Properties)).BeginInit();
@@ -155,21 +158,22 @@ namespace QLSV_VIETSENS
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LOCK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EDIT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -182,13 +186,13 @@ namespace QLSV_VIETSENS
             this.layoutControl1.Location = new System.Drawing.Point(0, 38);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1347, 589);
+            this.layoutControl1.Size = new System.Drawing.Size(1347, 656);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(375, 3);
+            this.btnSearch.Location = new System.Drawing.Point(380, 3);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(111, 27);
             this.btnSearch.StyleController = this.layoutControl1;
@@ -202,7 +206,7 @@ namespace QLSV_VIETSENS
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.MenuManager = this.barManager1;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(366, 22);
+            this.txtSearch.Size = new System.Drawing.Size(371, 22);
             this.txtSearch.StyleController = this.layoutControl1;
             this.txtSearch.TabIndex = 1;
             // 
@@ -218,10 +222,10 @@ namespace QLSV_VIETSENS
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bbtnAdd,
             this.bbtnEdit,
-            this.bbtnDelete,
             this.barButtonItem4,
-            this.bbtnSearch});
-            this.barManager1.MaxItemId = 6;
+            this.bbtnSearch,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 7;
             // 
             // bar1
             // 
@@ -232,8 +236,8 @@ namespace QLSV_VIETSENS
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnAdd),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnEdit),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnDelete),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSearch)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnSearch),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.bar1.Text = "Tools";
             this.bar1.Visible = false;
             // 
@@ -253,13 +257,6 @@ namespace QLSV_VIETSENS
             this.bbtnEdit.Name = "bbtnEdit";
             this.bbtnEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnEdit_ItemClick);
             // 
-            // bbtnDelete
-            // 
-            this.bbtnDelete.Caption = "Xoá (Ctrl D)";
-            this.bbtnDelete.Id = 2;
-            this.bbtnDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D));
-            this.bbtnDelete.Name = "bbtnDelete";
-            // 
             // bbtnSearch
             // 
             this.bbtnSearch.Caption = "Tìm (Ctrl F)";
@@ -267,6 +264,14 @@ namespace QLSV_VIETSENS
             this.bbtnSearch.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F));
             this.bbtnSearch.Name = "bbtnSearch";
             this.bbtnSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnSearch_ItemClick_1);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Reset (Ctrl R)";
+            this.barButtonItem1.Id = 6;
+            this.barButtonItem1.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -279,7 +284,7 @@ namespace QLSV_VIETSENS
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 627);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 694);
             this.barDockControlBottom.Size = new System.Drawing.Size(1347, 0);
             // 
             // barDockControlLeft
@@ -287,14 +292,14 @@ namespace QLSV_VIETSENS
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 38);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 589);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 656);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1347, 38);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 589);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 656);
             // 
             // barButtonItem4
             // 
@@ -307,7 +312,7 @@ namespace QLSV_VIETSENS
             this.groupControl1.Controls.Add(this.layoutControl2);
             this.groupControl1.Location = new System.Drawing.Point(1008, 36);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(336, 550);
+            this.groupControl1.Size = new System.Drawing.Size(336, 617);
             this.groupControl1.TabIndex = 5;
             this.groupControl1.Text = "Thông tin sinh viên";
             // 
@@ -330,27 +335,28 @@ namespace QLSV_VIETSENS
             this.layoutControl2.Location = new System.Drawing.Point(2, 25);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup2;
-            this.layoutControl2.Size = new System.Drawing.Size(332, 523);
+            this.layoutControl2.Size = new System.Drawing.Size(332, 590);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(220, 310);
+            this.btnReset.Location = new System.Drawing.Point(220, 366);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(109, 27);
             this.btnReset.StyleController = this.layoutControl2;
             this.btnReset.TabIndex = 6;
-            this.btnReset.Text = "Làm lại";
+            this.btnReset.Text = "Làm lại (Ctrl R)";
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.layoutControl3);
-            this.groupControl2.Location = new System.Drawing.Point(3, 353);
+            this.groupControl2.Location = new System.Drawing.Point(3, 420);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(326, 167);
             this.groupControl2.TabIndex = 17;
+            this.groupControl2.Text = "Bài tập 2 :";
             // 
             // layoutControl3
             // 
@@ -369,17 +375,18 @@ namespace QLSV_VIETSENS
             // 
             // labelControl6
             // 
-            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.BlueViolet;
+            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl6.Location = new System.Drawing.Point(3, 91);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(75, 16);
+            this.labelControl6.Size = new System.Drawing.Size(316, 16);
             this.labelControl6.StyleController = this.layoutControl3;
             this.labelControl6.TabIndex = 8;
             this.labelControl6.Text = "labelControl6";
             // 
             // labelControl5
             // 
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl5.Location = new System.Drawing.Point(3, 69);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(75, 16);
@@ -389,7 +396,7 @@ namespace QLSV_VIETSENS
             // 
             // labelControl4
             // 
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Location = new System.Drawing.Point(3, 47);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(75, 16);
@@ -399,7 +406,7 @@ namespace QLSV_VIETSENS
             // 
             // labelControl3
             // 
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.LightSeaGreen;
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Location = new System.Drawing.Point(3, 25);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(75, 16);
@@ -409,7 +416,7 @@ namespace QLSV_VIETSENS
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.AppearancePressed.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl1.Location = new System.Drawing.Point(3, 3);
@@ -427,7 +434,6 @@ namespace QLSV_VIETSENS
             this.layoutControlItem17,
             this.layoutControlItem18,
             this.layoutControlItem19,
-            this.emptySpaceItem3,
             this.layoutControlItem20,
             this.layoutControlItem22});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
@@ -463,14 +469,6 @@ namespace QLSV_VIETSENS
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextVisible = false;
             // 
-            // emptySpaceItem3
-            // 
-            this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 110);
-            this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(322, 30);
-            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // layoutControlItem20
             // 
             this.layoutControlItem20.Control = this.labelControl5;
@@ -485,13 +483,13 @@ namespace QLSV_VIETSENS
             this.layoutControlItem22.Control = this.labelControl6;
             this.layoutControlItem22.Location = new System.Drawing.Point(0, 88);
             this.layoutControlItem22.Name = "layoutControlItem22";
-            this.layoutControlItem22.Size = new System.Drawing.Size(322, 22);
+            this.layoutControlItem22.Size = new System.Drawing.Size(322, 52);
             this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem22.TextVisible = false;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(114, 310);
+            this.btnAdd.Location = new System.Drawing.Point(114, 366);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 27);
             this.btnAdd.StyleController = this.layoutControl2;
@@ -501,7 +499,7 @@ namespace QLSV_VIETSENS
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(3, 310);
+            this.btnEdit.Location = new System.Drawing.Point(3, 366);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(105, 27);
             this.btnEdit.StyleController = this.layoutControl2;
@@ -514,7 +512,7 @@ namespace QLSV_VIETSENS
             this.mmGhiChu.Location = new System.Drawing.Point(88, 227);
             this.mmGhiChu.MenuManager = this.barManager1;
             this.mmGhiChu.Name = "mmGhiChu";
-            this.mmGhiChu.Size = new System.Drawing.Size(241, 67);
+            this.mmGhiChu.Size = new System.Drawing.Size(241, 133);
             this.mmGhiChu.StyleController = this.layoutControl2;
             this.mmGhiChu.TabIndex = 10;
             // 
@@ -601,6 +599,7 @@ namespace QLSV_VIETSENS
             this.dateNS.Size = new System.Drawing.Size(241, 22);
             this.dateNS.StyleController = this.layoutControl2;
             this.dateNS.TabIndex = 4;
+            this.dateNS.Click += new System.EventHandler(this.dateNS_Click);
             this.dateNS.Validating += new System.ComponentModel.CancelEventHandler(this.dateNS_Validating);
             // 
             // txtTen
@@ -611,6 +610,7 @@ namespace QLSV_VIETSENS
             this.txtTen.Size = new System.Drawing.Size(241, 22);
             this.txtTen.StyleController = this.layoutControl2;
             this.txtTen.TabIndex = 3;
+            this.txtTen.Validating += new System.ComponentModel.CancelEventHandler(this.txtTen_Validating);
             // 
             // txtMa
             // 
@@ -640,20 +640,19 @@ namespace QLSV_VIETSENS
             this.layoutControlItem12,
             this.layoutControlItem13,
             this.layoutControlItem14,
-            this.emptySpaceItem2,
             this.layoutControlItem16,
-            this.emptySpaceItem7,
             this.layoutControlItem21,
-            this.layoutControlItem15});
+            this.layoutControlItem15,
+            this.emptySpaceItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.OptionsItemText.TextToControlDistance = 4;
-            this.layoutControlGroup2.Size = new System.Drawing.Size(332, 523);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(332, 590);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // layoutControlItem5
             // 
-            this.layoutControlItem5.AppearanceItemCaption.ForeColor = System.Drawing.Color.Black;
+            this.layoutControlItem5.AppearanceItemCaption.ForeColor = System.Drawing.Color.Gray;
             this.layoutControlItem5.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem5.AppearanceItemCaption.Options.UseTextOptions = true;
             this.layoutControlItem5.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -752,48 +751,32 @@ namespace QLSV_VIETSENS
             this.layoutControlItem13.Control = this.mmGhiChu;
             this.layoutControlItem13.Location = new System.Drawing.Point(0, 224);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(332, 73);
+            this.layoutControlItem13.Size = new System.Drawing.Size(332, 139);
             this.layoutControlItem13.Text = "Ghi chú:";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(81, 16);
             // 
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.btnEdit;
-            this.layoutControlItem14.Location = new System.Drawing.Point(0, 307);
+            this.layoutControlItem14.Location = new System.Drawing.Point(0, 363);
             this.layoutControlItem14.Name = "layoutControlItem14";
             this.layoutControlItem14.Size = new System.Drawing.Size(111, 33);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
             // 
-            // emptySpaceItem2
-            // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 340);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(332, 10);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // layoutControlItem16
             // 
             this.layoutControlItem16.Control = this.btnAdd;
-            this.layoutControlItem16.Location = new System.Drawing.Point(111, 307);
+            this.layoutControlItem16.Location = new System.Drawing.Point(111, 363);
             this.layoutControlItem16.Name = "layoutControlItem16";
             this.layoutControlItem16.Size = new System.Drawing.Size(106, 33);
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem16.TextVisible = false;
             // 
-            // emptySpaceItem7
-            // 
-            this.emptySpaceItem7.AllowHotTrack = false;
-            this.emptySpaceItem7.Location = new System.Drawing.Point(0, 297);
-            this.emptySpaceItem7.Name = "emptySpaceItem7";
-            this.emptySpaceItem7.Size = new System.Drawing.Size(332, 10);
-            this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // layoutControlItem21
             // 
             this.layoutControlItem21.Control = this.groupControl2;
-            this.layoutControlItem21.Location = new System.Drawing.Point(0, 350);
+            this.layoutControlItem21.Location = new System.Drawing.Point(0, 417);
             this.layoutControlItem21.Name = "layoutControlItem21";
             this.layoutControlItem21.Size = new System.Drawing.Size(332, 173);
             this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
@@ -802,11 +785,19 @@ namespace QLSV_VIETSENS
             // layoutControlItem15
             // 
             this.layoutControlItem15.Control = this.btnReset;
-            this.layoutControlItem15.Location = new System.Drawing.Point(217, 307);
+            this.layoutControlItem15.Location = new System.Drawing.Point(217, 363);
             this.layoutControlItem15.Name = "layoutControlItem15";
             this.layoutControlItem15.Size = new System.Drawing.Size(115, 33);
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem15.TextVisible = false;
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 396);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(332, 21);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // gridControl1
             // 
@@ -815,8 +806,8 @@ namespace QLSV_VIETSENS
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1,
-            this.LOCK});
-            this.gridControl1.Size = new System.Drawing.Size(999, 550);
+            this.EDIT});
+            this.gridControl1.Size = new System.Drawing.Size(999, 617);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -839,7 +830,11 @@ namespace QLSV_VIETSENS
             this.gridColumn10});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
             this.gridView1.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView1_RowUpdated);
@@ -855,7 +850,7 @@ namespace QLSV_VIETSENS
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 106;
+            this.gridColumn1.Width = 100;
             // 
             // gridColumn2
             // 
@@ -866,7 +861,7 @@ namespace QLSV_VIETSENS
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 106;
+            this.gridColumn2.Width = 110;
             // 
             // gridColumn3
             // 
@@ -875,9 +870,10 @@ namespace QLSV_VIETSENS
             this.gridColumn3.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
+            this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 139;
+            this.gridColumn3.Width = 100;
             // 
             // gridColumn4
             // 
@@ -888,90 +884,84 @@ namespace QLSV_VIETSENS
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 84;
+            this.gridColumn4.Width = 80;
             // 
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Đối tượng";
             this.gridColumn5.FieldName = "DoiTuong";
-            this.gridColumn5.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 95;
+            this.gridColumn5.Width = 110;
             // 
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Điểm toán";
             this.gridColumn6.FieldName = "DiemToan";
-            this.gridColumn6.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
-            this.gridColumn6.Width = 91;
+            this.gridColumn6.Width = 90;
             // 
             // gridColumn7
             // 
             this.gridColumn7.Caption = "Điểm văn";
             this.gridColumn7.FieldName = "DiemVan";
-            this.gridColumn7.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
-            this.gridColumn7.Width = 91;
+            this.gridColumn7.Width = 90;
             // 
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Điểm anh";
             this.gridColumn8.FieldName = "DiemAnh";
-            this.gridColumn8.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
-            this.gridColumn8.Width = 91;
+            this.gridColumn8.Width = 90;
             // 
             // gridColumn9
             // 
             this.gridColumn9.Caption = "Ghi chú";
             this.gridColumn9.FieldName = "GhiChu";
-            this.gridColumn9.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 8;
-            this.gridColumn9.Width = 106;
+            this.gridColumn9.Width = 100;
             // 
             // gridColumn10
             // 
             this.gridColumn10.Caption = "Xoá";
             this.gridColumn10.ColumnEdit = this.repositoryItemButtonEdit1;
             this.gridColumn10.FieldName = "DELETE";
-            this.gridColumn10.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.OptionsColumn.ShowCaption = false;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 9;
-            this.gridColumn10.Width = 52;
+            this.gridColumn10.Width = 40;
             // 
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEdit1.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEdit1.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "Xoá thông tin", null, null, true)});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
             // 
-            // LOCK
+            // EDIT
             // 
-            this.LOCK.AutoHeight = false;
-            this.LOCK.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.LOCK.Name = "LOCK";
+            this.EDIT.AutoHeight = false;
+            this.EDIT.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("EDIT.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "Sửa thông tin", null, null, true)});
+            this.EDIT.Name = "EDIT";
+            this.EDIT.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
             // layoutControlGroup1
             // 
@@ -986,7 +976,7 @@ namespace QLSV_VIETSENS
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.OptionsItemText.TextToControlDistance = 4;
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1347, 589);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1347, 656);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -994,7 +984,7 @@ namespace QLSV_VIETSENS
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 33);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1005, 556);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1005, 623);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -1003,7 +993,7 @@ namespace QLSV_VIETSENS
             this.layoutControlItem2.Control = this.groupControl1;
             this.layoutControlItem2.Location = new System.Drawing.Point(1005, 33);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(342, 556);
+            this.layoutControlItem2.Size = new System.Drawing.Size(342, 623);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -1012,14 +1002,14 @@ namespace QLSV_VIETSENS
             this.layoutControlItem3.Control = this.txtSearch;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(372, 33);
+            this.layoutControlItem3.Size = new System.Drawing.Size(377, 33);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.btnSearch;
-            this.layoutControlItem4.Location = new System.Drawing.Point(372, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(377, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(117, 33);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -1028,9 +1018,9 @@ namespace QLSV_VIETSENS
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(489, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(494, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(858, 33);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(853, 33);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // labelControl2
@@ -1041,11 +1031,15 @@ namespace QLSV_VIETSENS
             this.labelControl2.Size = new System.Drawing.Size(92, 17);
             this.labelControl2.TabIndex = 5;
             // 
+            // dxErrorProvider1
+            // 
+            this.dxErrorProvider1.ContainerControl = this;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1347, 627);
+            this.ClientSize = new System.Drawing.Size(1347, 694);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1071,7 +1065,6 @@ namespace QLSV_VIETSENS
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmGhiChu.Properties)).EndInit();
@@ -1095,21 +1088,22 @@ namespace QLSV_VIETSENS
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LOCK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EDIT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1132,7 +1126,6 @@ namespace QLSV_VIETSENS
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem bbtnAdd;
         private DevExpress.XtraBars.BarButtonItem bbtnEdit;
-        private DevExpress.XtraBars.BarButtonItem bbtnDelete;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraLayout.LayoutControl layoutControl2;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
@@ -1172,14 +1165,12 @@ namespace QLSV_VIETSENS
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
         private DevExpress.XtraBars.BarButtonItem bbtnSearch;
         private DevExpress.Utils.ToolTipController toolTipController1;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraEditors.TextEdit txtMa;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit LOCK;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit EDIT;
         private DevExpress.XtraEditors.SimpleButton btnReset;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -1191,12 +1182,15 @@ namespace QLSV_VIETSENS
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem22;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
     }
 }
 
