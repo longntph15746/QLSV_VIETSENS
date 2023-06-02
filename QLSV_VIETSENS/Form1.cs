@@ -86,8 +86,11 @@ namespace QLSV_VIETSENS
                 lstSinhVien.Add(sv);
                 gridControl1.DataSource = lstSinhVien;
                 gridControl1.RefreshDataSource();
-                MessageBox.Show("Thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                UpdateTongSoSinhVien();
+                UpdateTongSoSVByDoiTuong();
+                TongSoSinhVien8Plus();
+                SinhVienNam();
+                SinhVienNu();
                 LuuDuLieuSinhVien("TextFile1.txt");
             }
             catch (Exception ex)
@@ -182,7 +185,11 @@ namespace QLSV_VIETSENS
             lstSinhVien.Add(sv);
             gridControl1.DataSource = lstSinhVien;
             gridControl1.RefreshDataSource();
-            MessageBox.Show("Thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            UpdateTongSoSinhVien();
+            UpdateTongSoSVByDoiTuong();
+            TongSoSinhVien8Plus();
+            SinhVienNam();
+            SinhVienNu();
             LuuDuLieuSinhVien("TextFile1.txt");
         }
 
@@ -203,8 +210,13 @@ namespace QLSV_VIETSENS
                 lstSinhVien.Add(sv);
                 gridControl1.DataSource = lstSinhVien;
                 gridControl1.RefreshDataSource();
-                MessageBox.Show("Đã sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateTongSoSinhVien();
+                UpdateTongSoSVByDoiTuong();
+                TongSoSinhVien8Plus();
+                SinhVienNam();
+                SinhVienNu();
                 LuuDuLieuSinhVien("TextFile1.txt");
+
             }
             catch (Exception ex)
             {
@@ -250,6 +262,11 @@ namespace QLSV_VIETSENS
                     gridView1.RefreshData();
                 }
             }
+            UpdateTongSoSinhVien();
+            UpdateTongSoSVByDoiTuong();
+            TongSoSinhVien8Plus();
+            SinhVienNam();
+            SinhVienNu();
             LuuDuLieuSinhVien("TextFile1.txt");
         }
 
@@ -423,7 +440,11 @@ namespace QLSV_VIETSENS
             lstSinhVien.Add(sv);
             gridControl1.DataSource = lstSinhVien;
             gridControl1.RefreshDataSource();
-            MessageBox.Show("Đã sửa thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            UpdateTongSoSinhVien();
+            UpdateTongSoSVByDoiTuong();
+            TongSoSinhVien8Plus();
+            SinhVienNam();
+            SinhVienNu();
             LuuDuLieuSinhVien("TextFile1.txt");
         }
 
@@ -485,28 +506,15 @@ namespace QLSV_VIETSENS
             txtVan.Text = string.Empty;
             txtAnh.Text = string.Empty;
             mmGhiChu.Text = string.Empty;
+            txtSearch.Text = string.Empty;
             // Đặt focus vào điều khiển đầu tiên
             txtTen.Focus();
-        }
-
-        private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
-        {
-            UpdateTongSoSinhVien();
-            UpdateTongSoSVByDoiTuong();
-            TongSoSinhVien8Plus();
-            SinhVienNam();
-            SinhVienNu();
-            LuuDuLieuSinhVien("TextFile1.txt");
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            UpdateTongSoSinhVien();
         }
 
         private void TongSoSinhVien8Plus()
         {
             int count = gridView1.DataController.ListSource.Cast<SinhVien>()
-              .Count(sv => (sv.DiemToan + sv.DiemVan + sv.DiemAnh) / 3.0 > 8.0);
+              .Count(sv => (sv.DiemToan + sv.DiemVan + sv.DiemAnh) / 3.0 >= 8.0);
             labelControl4.Text = $"-Tổng số sinh viên có điểm TB Toán-Văn-Anh > 8: {count}";
         }
 
@@ -527,25 +535,12 @@ namespace QLSV_VIETSENS
             labelControl3.Text = sb.ToString();
         }
 
-        private void gridView1_DataSourceChanged(object sender, EventArgs e)
-        {
-        }
-
         private void UpdateTongSoSinhVien()
         {
             int tongSoSV = gridView1.DataRowCount;
 
             // Hiển thị tổng số sinh viên trong labelControl1
             labelControl1.Text = $"-Tổng số sinh viên :{tongSoSV} sinh viên";
-        }
-
-        private void gridView1_RowCountChanged(object sender, EventArgs e)
-        {
-            UpdateTongSoSinhVien();
-            UpdateTongSoSVByDoiTuong();
-            TongSoSinhVien8Plus();
-            SinhVienNam();
-            SinhVienNu();
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -622,12 +617,6 @@ namespace QLSV_VIETSENS
             // Đặt focus vào điều khiển đầu tiên
             txtTen.Focus();
         }
-
-        private void txtTen_Validating(object sender, CancelEventArgs e)
-        {
-
-        }
-
         private void dateNS_Click(object sender, EventArgs e)
         {
             DateEdit date = sender as DateEdit;
