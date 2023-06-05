@@ -653,16 +653,6 @@ namespace QLSV_VIETSENS
             }
         }
 
-        private void RADIO_EditValueChanged(object sender, EventArgs e)
-        {
-            //GridView gridView = sender as GridView;
-            //if (gridView != null && gridView.FocusedColumn.FieldName == "ChonMot")
-            //{
-            //    string selectedValue = Convert.ToString(gridView.GetFocusedValue());
-            //    // Xử lý logic khi radio được chọn
-            //}
-        }
-
         private void CHECKBOX_CheckedChanged(object sender, EventArgs e)
         {
             GridView gridView = sender as GridView;

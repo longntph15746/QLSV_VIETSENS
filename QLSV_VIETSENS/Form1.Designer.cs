@@ -975,8 +975,7 @@ namespace QLSV_VIETSENS
             this.RADIO.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem()});
             this.RADIO.Name = "RADIO";
-            this.RADIO.EditValueChanged += new System.EventHandler(this.RADIO_EditValueChanged);
-            // 
+            //
             // gridColumn7
             // 
             this.gridColumn7.Caption = "Điểm văn";
