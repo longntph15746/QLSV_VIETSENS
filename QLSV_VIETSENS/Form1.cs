@@ -1,15 +1,15 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.DXErrorProvider;
+using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLSV_VIETSENS
@@ -23,13 +23,6 @@ namespace QLSV_VIETSENS
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            ShowMain();
-        }
-
-        private void ShowMain()
-        {
-            GenerateMaSV();
-
         }
         private int countSV = 0;
 
@@ -41,7 +34,7 @@ namespace QLSV_VIETSENS
             while (isDuplicate)
             {
                 countSV++; // Tăng số lượng sinh viên lên 1
-                maSV = "SV" + countSV.ToString("0000"); // Sinh mã sinh viên tự động
+                maSV = "SV" + countSV.ToString("000000"); // Sinh mã sinh viên tự động
 
                 // Kiểm tra xem mã sinh viên đã tồn tại trong danh sách hay chưa
                 isDuplicate = lstSinhVien.Any(s => s.MaSinhVien == maSV);
@@ -107,6 +100,40 @@ namespace QLSV_VIETSENS
             SinhVien sv = view.GetRow(rowHandle) as SinhVien;
 
             // Cập nhật thông tin sinh viên từ giá trị mới trong ô
+            if (e.Column.FieldName == "IsSelected")
+            {
+                bool isSelected = Convert.ToBoolean(e.Value);
+                // Xử lý logic khi Checkbox được chọn hoặc bỏ chọn               
+            }
+            if (e.Column.FieldName == "IsSelected")
+            {
+                bool isSelected = Convert.ToBoolean(e.Value);
+                // Xử lý logic khi Checkbox được chọn hoặc bỏ chọn               
+            }
+            GridView gridView = sender as GridView;
+            if (gridView != null && e.Column.FieldName == "Selected")
+            {
+                SinhVien selectedSinhVien = gridView.GetRow(e.RowHandle) as SinhVien;
+                if (selectedSinhVien != null)
+                {
+                    bool isSelected = Convert.ToBoolean(e.Value);
+
+                    // Đặt trạng thái chọn của tất cả các sinh viên khác là false
+                    if (isSelected)
+                    {
+                        foreach (SinhVien sinhVien in gridView.DataController.ListSource.Cast<SinhVien>())
+                        {
+                            if (sinhVien != selectedSinhVien)
+                            {
+                                sinhVien.IsSelected = false;
+                                gridView.RefreshRow(gridView.GetRowHandle(gridView.DataController.ListSource.IndexOf(sinhVien)));
+                            }
+                        }
+                    }
+
+                    // Xử lý logic khi Radio được chọn
+                }
+            }
             if (e.Column.FieldName == "MaSinhVien")
                 sv.MaSinhVien = e.Value.ToString();
             else if (e.Column.FieldName == "HoTen")
@@ -116,11 +143,7 @@ namespace QLSV_VIETSENS
             else if (e.Column.FieldName == "GioiTinh")
                 sv.GioiTinh = e.Value.ToString();
             else if (e.Column.FieldName == "DoiTuong")
-            {
                 sv.DoiTuong = e.Value.ToString();
-                //UpdateTongSoSVByDoiTuong();
-            }
-
             else if (e.Column.FieldName == "DiemToan")
                 sv.DiemToan = Convert.ToDouble(e.Value.ToString());
             else if (e.Column.FieldName == "DiemVan")
@@ -131,7 +154,6 @@ namespace QLSV_VIETSENS
                 sv.GhiChu = e.Value.ToString();
 
         }
-
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
 
@@ -153,44 +175,7 @@ namespace QLSV_VIETSENS
 
         private void bbtnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SinhVien sv = new SinhVien();
-            sv.MaSinhVien = GenerateMaSV();
-            // Kiểm tra trường tên sinh viên
-            if (string.IsNullOrEmpty(txtTen.Text))
-            {
-                MessageBox.Show("Vui lòng nhập tên sinh viên.");
-                return;
-            }
-
-            // Kiểm tra trường ngày sinh
-            if (dateNS.EditValue == null)
-            {
-                MessageBox.Show("Vui lòng chọn ngày sinh.");
-                return;
-            }
-            // Kiểm tra trường giới tính
-            if (cboGioiTinh.EditValue == null)
-            {
-                MessageBox.Show("Vui lòng chọn giới tính.");
-                return;
-            }
-            sv.HoTen = txtTen.Text;
-            sv.NgaySinh = dateNS.DateTime;
-            sv.GioiTinh = cboGioiTinh.SelectedItem.ToString();
-            sv.DoiTuong = cboDoiTuong.Text.ToString();
-            sv.DiemToan = string.IsNullOrEmpty(txtToan.Text) ? 0 : Convert.ToDouble(txtToan.Text);
-            sv.DiemVan = string.IsNullOrEmpty(txtVan.Text) ? 0 : Convert.ToDouble(txtVan.Text);
-            sv.DiemAnh = string.IsNullOrEmpty(txtAnh.Text) ? 0 : Convert.ToDouble(txtAnh.Text);
-            sv.GhiChu = mmGhiChu.Text;
-            lstSinhVien.Add(sv);
-            gridControl1.DataSource = lstSinhVien;
-            gridControl1.RefreshDataSource();
-            UpdateTongSoSinhVien();
-            UpdateTongSoSVByDoiTuong();
-            TongSoSinhVien8Plus();
-            SinhVienNam();
-            SinhVienNu();
-            LuuDuLieuSinhVien("data.txt");
+            this.btnAdd_Click(null, null);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -402,38 +387,13 @@ namespace QLSV_VIETSENS
         }
         private void gridControl1_Load_1(object sender, EventArgs e)
         {
-            string fileName = "data.txt";
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
 
-            // Kiểm tra xem tệp tin tồn tại hay không
-            if (File.Exists(filePath))
-            {
-                LoadDuLieuSinhVien(filePath);
-            }
 
         }
 
         private void bbtnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var sv = lstSinhVien.FirstOrDefault(x => x.MaSinhVien == txtMa.Text);
-            lstSinhVien.Remove(sv);
-            sv.HoTen = txtTen.Text;
-            sv.NgaySinh = dateNS.DateTime;
-            sv.GioiTinh = cboGioiTinh.SelectedItem.ToString();
-            sv.DoiTuong = cboDoiTuong.Text.ToString();
-            sv.DiemToan = string.IsNullOrEmpty(txtToan.Text) ? 0 : Convert.ToDouble(txtToan.Text);
-            sv.DiemVan = string.IsNullOrEmpty(txtVan.Text) ? 0 : Convert.ToDouble(txtVan.Text);
-            sv.DiemAnh = string.IsNullOrEmpty(txtAnh.Text) ? 0 : Convert.ToDouble(txtAnh.Text);
-            sv.GhiChu = mmGhiChu.Text;
-            lstSinhVien.Add(sv);
-            gridControl1.DataSource = lstSinhVien;
-            gridControl1.RefreshDataSource();
-            UpdateTongSoSinhVien();
-            UpdateTongSoSVByDoiTuong();
-            TongSoSinhVien8Plus();
-            SinhVienNam();
-            SinhVienNu();
-            LuuDuLieuSinhVien("data.txt");
+            this.btnEdit_Click(null, null);
         }
 
         private void bbtnSearch_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -515,7 +475,7 @@ namespace QLSV_VIETSENS
         {
             if (gridView1.DataController.ListSource == null)
             {
-                labelControl3.Text = "- Sinh viên theo từng đối tượng: 0";
+                labelControl3.Text = "-Sinh viên theo từng đối tượng: 0";
                 return;
             }
 
@@ -678,5 +638,40 @@ namespace QLSV_VIETSENS
                 throw;
             }
         }
+
+        private void cboDoiTuong_Closed(object sender, DevExpress.XtraEditors.Controls.ClosedEventArgs e)
+        {
+            try
+            {
+                if (this.cboDoiTuong.EditValue != null)
+                {
+                    this.txtToan.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void RADIO_EditValueChanged(object sender, EventArgs e)
+        {
+            //GridView gridView = sender as GridView;
+            //if (gridView != null && gridView.FocusedColumn.FieldName == "ChonMot")
+            //{
+            //    string selectedValue = Convert.ToString(gridView.GetFocusedValue());
+            //    // Xử lý logic khi radio được chọn
+            //}
+        }
+
+        private void CHECKBOX_CheckedChanged(object sender, EventArgs e)
+        {
+            GridView gridView = sender as GridView;
+            if (gridView != null && gridView.FocusedColumn.FieldName == "Chon")
+            {
+                bool isChecked = Convert.ToBoolean(gridView.GetFocusedValue());
+                // Xử lý logic khi checkbox được chọn hoặc bỏ chọn
+            }
+        }
+        
     }
 }

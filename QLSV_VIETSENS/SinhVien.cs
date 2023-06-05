@@ -19,6 +19,8 @@ namespace QLSV_VIETSENS
         public double? DiemVan { get; set; }
         public double? DiemAnh { get; set; }
         public string GhiChu { get; set; }
+        public bool IsSelected { get; set; }
+        public bool Selected { get; set; }
 
     }
 }

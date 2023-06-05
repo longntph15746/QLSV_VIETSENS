@@ -106,6 +106,10 @@ namespace QLSV_VIETSENS
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CHECKBOX = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.RADIO = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -165,6 +169,8 @@ namespace QLSV_VIETSENS
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHECKBOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RADIO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDIT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -376,10 +382,9 @@ namespace QLSV_VIETSENS
             // labelControl6
             // 
             this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl6.Location = new System.Drawing.Point(3, 91);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(316, 16);
+            this.labelControl6.Size = new System.Drawing.Size(75, 16);
             this.labelControl6.StyleController = this.layoutControl3;
             this.labelControl6.TabIndex = 8;
             this.labelControl6.Text = "labelControl6";
@@ -568,6 +573,7 @@ namespace QLSV_VIETSENS
             this.cboDoiTuong.Size = new System.Drawing.Size(241, 22);
             this.cboDoiTuong.StyleController = this.layoutControl2;
             this.cboDoiTuong.TabIndex = 6;
+            this.cboDoiTuong.Closed += new DevExpress.XtraEditors.Controls.ClosedEventHandler(this.cboDoiTuong_Closed);
             this.cboDoiTuong.Click += new System.EventHandler(this.cboDoiTuong_Click);
             // 
             // cboGioiTinh
@@ -808,7 +814,9 @@ namespace QLSV_VIETSENS
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1,
-            this.EDIT});
+            this.EDIT,
+            this.CHECKBOX,
+            this.RADIO});
             this.gridControl1.Size = new System.Drawing.Size(999, 617);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -827,6 +835,8 @@ namespace QLSV_VIETSENS
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
+            this.gridColumn12,
+            this.gridColumn11,
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9});
@@ -837,8 +847,10 @@ namespace QLSV_VIETSENS
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
+            
             this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
+           
             this.gridView1.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.gridView1_CustomUnboundColumnData);
             // 
             // gridColumn10
@@ -890,6 +902,7 @@ namespace QLSV_VIETSENS
             this.gridColumn3.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
+            this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 3;
             this.gridColumn3.Width = 100;
@@ -925,6 +938,45 @@ namespace QLSV_VIETSENS
             this.gridColumn6.VisibleIndex = 6;
             this.gridColumn6.Width = 90;
             // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "IsSelected";
+            this.gridColumn12.ColumnEdit = this.CHECKBOX;
+            this.gridColumn12.FieldName = "IsSelected";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn12.OptionsColumn.ShowCaption = false;
+            this.gridColumn12.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 7;
+            // 
+            // CHECKBOX
+            // 
+            this.CHECKBOX.AutoHeight = false;
+            this.CHECKBOX.Name = "CHECKBOX";
+            this.CHECKBOX.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
+            this.CHECKBOX.CheckedChanged += new System.EventHandler(this.CHECKBOX_CheckedChanged);
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Radio";
+            this.gridColumn11.ColumnEdit = this.RADIO;
+            this.gridColumn11.FieldName = "Selected";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn11.OptionsColumn.ShowCaption = false;
+            this.gridColumn11.UnboundType = DevExpress.Data.UnboundColumnType.String;
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 8;
+            // 
+            // RADIO
+            // 
+            this.RADIO.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.RADIO.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem()});
+            this.RADIO.Name = "RADIO";
+            this.RADIO.EditValueChanged += new System.EventHandler(this.RADIO_EditValueChanged);
+            // 
             // gridColumn7
             // 
             this.gridColumn7.Caption = "Điểm văn";
@@ -932,7 +984,7 @@ namespace QLSV_VIETSENS
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 7;
+            this.gridColumn7.VisibleIndex = 9;
             this.gridColumn7.Width = 90;
             // 
             // gridColumn8
@@ -942,7 +994,7 @@ namespace QLSV_VIETSENS
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 8;
+            this.gridColumn8.VisibleIndex = 10;
             this.gridColumn8.Width = 90;
             // 
             // gridColumn9
@@ -951,7 +1003,7 @@ namespace QLSV_VIETSENS
             this.gridColumn9.FieldName = "GhiChu";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 9;
+            this.gridColumn9.VisibleIndex = 11;
             this.gridColumn9.Width = 170;
             // 
             // EDIT
@@ -1095,6 +1147,8 @@ namespace QLSV_VIETSENS
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHECKBOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RADIO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EDIT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -1138,7 +1192,6 @@ namespace QLSV_VIETSENS
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
@@ -1191,6 +1244,11 @@ namespace QLSV_VIETSENS
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit CHECKBOX;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup RADIO;
     }
 }
 
