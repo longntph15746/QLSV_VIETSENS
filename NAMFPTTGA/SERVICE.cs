@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -53,8 +54,9 @@ namespace NAMFPTTGA
 
         public void LuuFileDanhSachSanPham()
         {
-            Console.Write("Nhap duong dan file: ");
-            string filePath = Console.ReadLine();
+            string fileName = @"D:\Vietsens\Học việc\TEST\QLSV_VIETSENS\NAMFPTTGA\data.txt";
+            string directoryPath = Directory.GetCurrentDirectory();
+            string filePath = Path.Combine(directoryPath, fileName);
 
             try
             {
@@ -75,9 +77,8 @@ namespace NAMFPTTGA
 
         public void DocFileDanhSachSanPham()
         {
-            Console.Write("Nhap duong dan file: ");
-            string filePath = Console.ReadLine();
-
+            string filePath = @"D:\Vietsens\Học việc\TEST\QLSV_VIETSENS\NAMFPTTGA\data.txt";
+            Console.WriteLine("Danh sách sinh viên : ");
             try
             {
                 using (StreamReader reader = new StreamReader(filePath))
@@ -85,28 +86,9 @@ namespace NAMFPTTGA
                     string line;
                     while ((line = reader.ReadLine()) != null)
                     {
-                        string[] parts = line.Split(',');
-                        if (parts.Length == 4)
-                        {
-                            Guid id;
-                            if (Guid.TryParse(parts[0], out id))
-                            {
-                                string ten = parts[1];
-                                double gia;
-                                if (double.TryParse(parts[2], out gia))
-                                {
-                                    int soLuong;
-                                    if (int.TryParse(parts[3], out soLuong))
-                                    {
-                                        SanPham sanPham = new SanPham(ten, gia, soLuong);
-                                        danhSachSanPham.Add(sanPham);
-                                    }
-                                }
-                            }
-                        }
+                        Console.WriteLine(line);
                     }
                 }
-                Console.WriteLine("Doc file thanh cong!");
             }
             catch (Exception ex)
             {
