@@ -46,13 +46,7 @@ namespace TEST_NAMFPT
 
         public void XuatCayBatDauBangD()
         {
-            foreach (Cay cay in danhSachCay)
-            {
-                //if (cay.GetTen().StartsWith("D"))
-                //{
-                //    cay.InThongTin();
-                //}
-            }
+            
         }
 
         public void XuatCayChieuCaoTren5Met()

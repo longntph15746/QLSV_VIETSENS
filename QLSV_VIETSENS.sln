@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LUYEN_TAP_SO_2", "TEST_NAMF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LUYEN_TAP_SO_1", "NAMFPTTGA\LUYEN_TAP_SO_1.csproj", "{8AC1E716-1100-4F17-A192-EB88FD84E34A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LUYEN_TAP_SO_3", "LUYEN_TAP_SO_3\LUYEN_TAP_SO_3.csproj", "{20DC3544-66B7-47C7-A06A-F986741AEA8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8AC1E716-1100-4F17-A192-EB88FD84E34A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AC1E716-1100-4F17-A192-EB88FD84E34A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AC1E716-1100-4F17-A192-EB88FD84E34A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20DC3544-66B7-47C7-A06A-F986741AEA8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20DC3544-66B7-47C7-A06A-F986741AEA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20DC3544-66B7-47C7-A06A-F986741AEA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20DC3544-66B7-47C7-A06A-F986741AEA8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
